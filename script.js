@@ -1,35 +1,28 @@
 const warningCard = document.getElementById("warningCard");
-const adImageBox = document.getElementById("adImageBox");
-
-const hintText = document.getElementById("hintText");
-const collapseText = document.getElementById("collapseText");
-
+const returnButton = document.getElementById("returnButton");
 const infoButton = document.getElementById("infoButton");
 const backInfo = document.getElementById("backInfo");
 
-warningCard.addEventListener("click", function () {
-  adImageBox.classList.add("show");
-  collapseText.classList.add("show");
-  hintText.classList.add("hide");
-  infoButton.classList.add("show");
-});
+if (warningCard) {
+  warningCard.addEventListener("click", function () {
+    window.location.href = "detail.html";
+  });
+}
 
-collapseText.addEventListener("click", function () {
-  adImageBox.classList.remove("show");
-  collapseText.classList.remove("show");
-  hintText.classList.remove("hide");
-  infoButton.classList.remove("show");
+if (returnButton) {
+  returnButton.addEventListener("click", function () {
+    window.location.href = "index.html";
+  });
+}
 
-  backInfo.classList.remove("show");
-  infoButton.textContent = "查看详细信息";
-});
+if (infoButton && backInfo) {
+  infoButton.addEventListener("click", function () {
+    backInfo.classList.toggle("show");
 
-infoButton.addEventListener("click", function () {
-  backInfo.classList.toggle("show");
-
-  if (backInfo.classList.contains("show")) {
-    infoButton.textContent = "收起详细信息";
-  } else {
-    infoButton.textContent = "查看详细信息";
-  }
-});
+    if (backInfo.classList.contains("show")) {
+      infoButton.textContent = "收起详细信息";
+    } else {
+      infoButton.textContent = "查看详细信息";
+    }
+  });
+}
